@@ -63,3 +63,23 @@ glukosa_plasma_nol_gruped = glukosa_plasma_nol.groupby('Luaran')['Umur'].count()
 print(glukosa_plasma_nol_gruped)
 print("Total",glukosa_plasma_nol_jumlah)
 print("===============================================")
+
+# ini step 10
+print("===============================================")
+print("Langkah 9 , tebal kulit 10 mm")
+kulit_10 = diabetes[diabetes['TebalKulit']==0]
+kulit_jumlah = diabetes[diabetes['TebalKulit']==0].shape[0]
+kulit_jumlah_grup = kulit_10.groupby('Luaran')['Umur'].count()
+print(kulit_jumlah_grup)
+print("Total",kulit_jumlah)
+("===============================================")
+
+# ini step 11
+print("===============================================")
+print("Langkah 10 , BMI tidak boleh lebih kecil dr 0")
+bmi_k0 = diabetes[diabetes['BMI']==0]
+bmi_k0_jml = diabetes[diabetes['BMI']==0].shape[0]
+bmi_k0_jml_grup = kulit_10.groupby('Luaran')['Umur'].count()
+print(bmi_k0_jml_grup)
+print("Total",bmi_k0_jml)
+("===============================================")
