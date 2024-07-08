@@ -154,11 +154,25 @@ print(tr_split)
 ("===============================================")
 names = []
 scores=[]
-for name , model in models:
-    kfold = KFold(n_splits = 10,random_state = 10)
-    score = cross_val_score(model,x,y,cv=kfold,scoring='accuracy'),mean()
+for name, model in models:
+    kfold = KFold(n_splits=10, random_state=10, shuffle=True)
+    cv_results = cross_val_score(model, x, y, cv=kfold, scoring='accuracy')
+    mean_score = np.mean(cv_results)
     names.append(name)
-    score.append(score)
-kf_cross_val = pd.DataFrame({'Nama':names,'Nilai':score})
+    scores.append(mean_score)
+kf_cross_val = pd.DataFrame({'Nama':names,'Nilai':scores})
 print(kf_cross_val)
+("===============================================")
+
+
+# langkah 18 
+
+("===============================================")
+axis = sns.barplot(x = 'Nama',y = 'Nilai', data = kf_cross_val)
+axis.set(xlabel = 'Klasifikasi', ylabel = 'Akurasi')
+
+for p in axis.patches:
+    tinggi = p.get_height()
+    axis.text(p.get_x()+p.get_width()/2,tinggi+0.005,'{:1.4f}'.format(tinggi),ha="center")
+plt.show()
 ("===============================================")
